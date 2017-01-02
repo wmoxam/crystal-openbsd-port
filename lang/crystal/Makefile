@@ -1,11 +1,8 @@
 # $OpenBSD: Makefile.template,v 1.75 2016/03/20 17:19:49 naddy Exp $
 
-# Reasons why the port/package shouldn't be built
-#
 ONLY_FOR_ARCHS =	amd64
 
-COMMENT =	statically typed object oriented language
-
+COMMENT  =	statically typed object oriented language
 VERSION  =      0.20.3
 DISTNAME =	crystal-${VERSION}
 PKGNAME  =	crystal-${VERSION}
