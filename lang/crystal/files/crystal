@@ -1,0 +1,4 @@
+#!/bin/sh
+CRYSTAL_ROOT=${LOCALBASE}/lib/crystal
+export CRYSTAL_PATH=$CRYSTAL_ROOT/src:libs:lib
+exec $CRYSTAL_ROOT/bin/crystal "$@"
