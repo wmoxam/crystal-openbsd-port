@@ -3,7 +3,7 @@
 ONLY_FOR_ARCHS =	amd64
 
 COMMENT  =	statically typed object oriented language
-VERSION  =      0.20.3
+VERSION  =      0.20.4
 DISTNAME =	crystal-${VERSION}
 PKGNAME  =	crystal-${VERSION}
 
@@ -27,7 +27,8 @@ USE_GMAKE    =		Yes
 RUN_DEPENDS =		converters/libiconv \
 			devel/boehm-gc \
 			devel/libevent2 \
-			devel/pcre
+			devel/pcre \
+			shells/bash
 
 MODULES	       =	lang/clang
 MODCLANG_ARCHS =	amd64
