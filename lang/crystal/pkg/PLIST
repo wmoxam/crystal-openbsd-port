@@ -159,6 +159,7 @@ lib/crystal/src/compiler/crystal/tools/doc/markdown_doc_renderer.cr
 lib/crystal/src/compiler/crystal/tools/doc/method.cr
 lib/crystal/src/compiler/crystal/tools/doc/templates.cr
 lib/crystal/src/compiler/crystal/tools/doc/type.cr
+lib/crystal/src/compiler/crystal/tools/expand.cr
 lib/crystal/src/compiler/crystal/tools/formatter.cr
 lib/crystal/src/compiler/crystal/tools/implementations.cr
 lib/crystal/src/compiler/crystal/tools/init/
@@ -289,6 +290,7 @@ lib/crystal/src/fiber.cr
 lib/crystal/src/file/
 lib/crystal/src/file.cr
 lib/crystal/src/file/flock.cr
+lib/crystal/src/file/preader.cr
 lib/crystal/src/file/stat.cr
 lib/crystal/src/file_utils.cr
 lib/crystal/src/float.cr
@@ -877,8 +879,17 @@ lib/crystal/src/yaml/mapping.cr
 lib/crystal/src/yaml/parser.cr
 lib/crystal/src/yaml/pull_parser.cr
 lib/crystal/src/yaml/to_yaml.cr
+lib/crystal/src/zip/
+lib/crystal/src/zip/checksum_reader.cr
+lib/crystal/src/zip/checksum_writer.cr
+lib/crystal/src/zip/file.cr
+lib/crystal/src/zip/file_info.cr
+lib/crystal/src/zip/reader.cr
+lib/crystal/src/zip/writer.cr
+lib/crystal/src/zip/zip.cr
 lib/crystal/src/zlib/
 lib/crystal/src/zlib.cr
+lib/crystal/src/zlib/compression_method.cr
 lib/crystal/src/zlib/deflate.cr
 lib/crystal/src/zlib/inflate.cr
 lib/crystal/src/zlib/lib_zlib.cr
