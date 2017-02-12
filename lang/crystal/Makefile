@@ -22,7 +22,7 @@ WANTLIB += c event_core event_extra gc iconv m pcre pthread z
 MASTER_SITES  =		https://github.com/crystal-lang/crystal/archive/
 MASTER_SITES0 = 	http://wmoxam.com/public/
 DISTFILES     =		${VERSION}.tar.gz \
-			crystal-${VERSION}-OpenBSD6.0.tar.gz:0
+			crystal-${VERSION}-OpenBSD6.1.tar.gz:0
 
 NO_CONFIGURE =		Yes
 USE_GMAKE    =		Yes
