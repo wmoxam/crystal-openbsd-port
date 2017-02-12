@@ -1,4 +1,4 @@
 SHA256 (0.20.5.tar.gz) = 7h5ZSMbmYsyx5iZxzyyRRYd1tVmyPXSrIm3CotI/dwc=
-SHA256 (crystal-0.20.5.tar.gz) = XmMSOvDuVl1zsY1Sppqh3PDYaLvjV2FoMnymO9htzlc=
+SHA256 (crystal-0.20.5-OpenBSD6.1.tar.gz) = Y6UaIswYytIQNHsBoKkJG80WYNg8BOpaAuOa9NNL7LE=
 SIZE (0.20.5.tar.gz) = 1550878
-SIZE (crystal-0.20.5.tar.gz) = 6200119
+SIZE (crystal-0.20.5-OpenBSD6.1.tar.gz) = 5307274
