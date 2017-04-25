@@ -256,7 +256,10 @@ lib/crystal/src/csv/token.cr
 lib/crystal/src/debug/
 lib/crystal/src/debug/dwarf/
 lib/crystal/src/debug/dwarf.cr
+lib/crystal/src/debug/dwarf/abbrev.cr
+lib/crystal/src/debug/dwarf/info.cr
 lib/crystal/src/debug/dwarf/line_numbers.cr
+lib/crystal/src/debug/dwarf/strings.cr
 lib/crystal/src/debug/elf.cr
 lib/crystal/src/debug/mach_o.cr
 lib/crystal/src/deque.cr
