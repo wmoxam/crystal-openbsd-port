@@ -85,6 +85,7 @@ lib/crystal/src/compiler/crystal/macros/interpreter.cr
 lib/crystal/src/compiler/crystal/macros/macros.cr
 lib/crystal/src/compiler/crystal/macros/methods.cr
 lib/crystal/src/compiler/crystal/program.cr
+lib/crystal/src/compiler/crystal/progress_tracker.cr
 lib/crystal/src/compiler/crystal/semantic/
 lib/crystal/src/compiler/crystal/semantic.cr
 lib/crystal/src/compiler/crystal/semantic/abstract_def_checker.cr
@@ -167,6 +168,7 @@ lib/crystal/src/compiler/crystal/tools/implementations.cr
 lib/crystal/src/compiler/crystal/tools/init/
 lib/crystal/src/compiler/crystal/tools/init.cr
 lib/crystal/src/compiler/crystal/tools/init/template/
+lib/crystal/src/compiler/crystal/tools/init/template/editorconfig.ecr
 lib/crystal/src/compiler/crystal/tools/init/template/example.cr.ecr
 lib/crystal/src/compiler/crystal/tools/init/template/example_spec.cr.ecr
 lib/crystal/src/compiler/crystal/tools/init/template/gitignore.ecr
@@ -224,6 +226,7 @@ lib/crystal/src/compiler/crystal/tools/playground/views/layout.html.ecr
 lib/crystal/src/compiler/crystal/tools/print_hierarchy.cr
 lib/crystal/src/compiler/crystal/tools/print_types_visitor.cr
 lib/crystal/src/compiler/crystal/tools/table_print.cr
+lib/crystal/src/compiler/crystal/tools/typed_def_processor.cr
 lib/crystal/src/compiler/crystal/types.cr
 lib/crystal/src/compiler/crystal/util.cr
 lib/crystal/src/complex.cr
@@ -243,6 +246,19 @@ lib/crystal/src/crypto/bcrypt/blowfish.cr
 lib/crystal/src/crypto/bcrypt/password.cr
 lib/crystal/src/crypto/blowfish.cr
 lib/crystal/src/crypto/subtle.cr
+lib/crystal/src/crystal/
+lib/crystal/src/crystal/system/
+lib/crystal/src/crystal/system.cr
+lib/crystal/src/crystal/system/random.cr
+lib/crystal/src/crystal/system/time.cr
+lib/crystal/src/crystal/system/unix/
+lib/crystal/src/crystal/system/unix/arc4random.cr
+lib/crystal/src/crystal/system/unix/getrandom.cr
+lib/crystal/src/crystal/system/unix/hostname.cr
+lib/crystal/src/crystal/system/unix/sysconf_cpucount.cr
+lib/crystal/src/crystal/system/unix/sysctl_cpucount.cr
+lib/crystal/src/crystal/system/unix/time.cr
+lib/crystal/src/crystal/system/unix/urandom.cr
 lib/crystal/src/csv/
 lib/crystal/src/csv.cr
 lib/crystal/src/csv/builder.cr
@@ -306,7 +322,14 @@ lib/crystal/src/flate/
 lib/crystal/src/flate/flate.cr
 lib/crystal/src/flate/reader.cr
 lib/crystal/src/flate/writer.cr
+lib/crystal/src/float/
 lib/crystal/src/float.cr
+lib/crystal/src/float/printer/
+lib/crystal/src/float/printer.cr
+lib/crystal/src/float/printer/cached_powers.cr
+lib/crystal/src/float/printer/diy_fp.cr
+lib/crystal/src/float/printer/grisu3.cr
+lib/crystal/src/float/printer/ieee.cr
 lib/crystal/src/gc/
 lib/crystal/src/gc.cr
 lib/crystal/src/gc/boehm.cr
@@ -368,7 +391,6 @@ lib/crystal/src/io/console.cr
 lib/crystal/src/io/delimited.cr
 lib/crystal/src/io/encoding.cr
 lib/crystal/src/io/error.cr
-lib/crystal/src/io/fd_set.cr
 lib/crystal/src/io/file_descriptor.cr
 lib/crystal/src/io/hexdump.cr
 lib/crystal/src/io/memory.cr
@@ -458,6 +480,7 @@ lib/crystal/src/lib_c/${MACHINE_ARCH}-unknown-openbsd/c/sys/times.cr
 lib/crystal/src/lib_c/${MACHINE_ARCH}-unknown-openbsd/c/sys/types.cr
 lib/crystal/src/lib_c/${MACHINE_ARCH}-unknown-openbsd/c/sys/un.cr
 lib/crystal/src/lib_c/${MACHINE_ARCH}-unknown-openbsd/c/sys/wait.cr
+lib/crystal/src/lib_c/${MACHINE_ARCH}-unknown-openbsd/c/sysctl.cr
 lib/crystal/src/lib_c/${MACHINE_ARCH}-unknown-openbsd/c/termios.cr
 lib/crystal/src/lib_c/${MACHINE_ARCH}-unknown-openbsd/c/time.cr
 lib/crystal/src/lib_c/${MACHINE_ARCH}-unknown-openbsd/c/unistd.cr
@@ -694,6 +717,7 @@ lib/crystal/src/lib_c/x86_64-portbld-freebsd/c/sys/times.cr
 lib/crystal/src/lib_c/x86_64-portbld-freebsd/c/sys/types.cr
 lib/crystal/src/lib_c/x86_64-portbld-freebsd/c/sys/un.cr
 lib/crystal/src/lib_c/x86_64-portbld-freebsd/c/sys/wait.cr
+lib/crystal/src/lib_c/x86_64-portbld-freebsd/c/sysctl.cr
 lib/crystal/src/lib_c/x86_64-portbld-freebsd/c/termios.cr
 lib/crystal/src/lib_c/x86_64-portbld-freebsd/c/time.cr
 lib/crystal/src/lib_c/x86_64-portbld-freebsd/c/unistd.cr
@@ -728,6 +752,7 @@ lib/crystal/src/llvm/lib_llvm_ext.cr
 lib/crystal/src/llvm/memory_buffer.cr
 lib/crystal/src/llvm/module.cr
 lib/crystal/src/llvm/module_pass_manager.cr
+lib/crystal/src/llvm/operand_bundle_def.cr
 lib/crystal/src/llvm/parameter_collection.cr
 lib/crystal/src/llvm/pass_manager_builder.cr
 lib/crystal/src/llvm/pass_registry.cr
@@ -781,6 +806,7 @@ lib/crystal/src/openssl/cipher.cr
 lib/crystal/src/openssl/digest/
 lib/crystal/src/openssl/digest/digest.cr
 lib/crystal/src/openssl/digest/digest_base.cr
+lib/crystal/src/openssl/digest/digest_io.cr
 lib/crystal/src/openssl/hmac.cr
 lib/crystal/src/openssl/lib_crypto.cr
 lib/crystal/src/openssl/lib_ssl.cr
@@ -812,6 +838,7 @@ lib/crystal/src/random/
 lib/crystal/src/random.cr
 lib/crystal/src/random/isaac.cr
 lib/crystal/src/random/mt19937.cr
+lib/crystal/src/random/system.cr
 lib/crystal/src/range/
 lib/crystal/src/range.cr
 lib/crystal/src/range/bsearch.cr

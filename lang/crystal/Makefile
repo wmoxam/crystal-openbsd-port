@@ -6,7 +6,7 @@ ONLY_FOR_ARCHS =	amd64
 
 COMMENT =	statically typed object oriented language
 
-VERSION  =      0.23.0
+VERSION  =      0.23.1
 DISTNAME =	crystal-${VERSION}
 PKGNAME  =	crystal-${VERSION}
 
