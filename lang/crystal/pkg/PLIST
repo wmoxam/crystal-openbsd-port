@@ -838,6 +838,7 @@ lib/crystal/src/random/
 lib/crystal/src/random.cr
 lib/crystal/src/random/isaac.cr
 lib/crystal/src/random/mt19937.cr
+lib/crystal/src/random/pcg32.cr
 lib/crystal/src/random/system.cr
 lib/crystal/src/range/
 lib/crystal/src/range.cr
