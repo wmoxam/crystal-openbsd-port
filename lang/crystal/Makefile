@@ -49,12 +49,10 @@ do-build:
 	cd ${WRKSRC} && gmake deps && CC=clang gmake
 
 do-install:
-	${INSTALL_DATA} ${FILESDIR}/crystal ${WRKSRC}
-	${SUBST_CMD} ${WRKSRC}/crystal
-	${INSTALL_SCRIPT} ${WRKSRC}/crystal ${PREFIX}/bin
 	${INSTALL_DATA_DIR} ${PREFIX}/lib/crystal
 	${INSTALL_DATA_DIR} ${PREFIX}/lib/crystal/bin
 	${INSTALL_PROGRAM} ${WRKSRC}/.build/crystal ${PREFIX}/lib/crystal/bin
 	cp -R ${WRKSRC}/src/ ${PREFIX}/lib/crystal/src/
+	ln -s ${PREFIX}/lib/crystal/bin/crystal ${PREFIX}/bin/crystal
 
 .include <bsd.port.mk>
