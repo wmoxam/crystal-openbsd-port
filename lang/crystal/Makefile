@@ -30,23 +30,20 @@ USE_GMAKE    =		Yes
 LIB_DEPENDS =           converters/libiconv \
                         devel/boehm-gc \
                         devel/libevent2 \
+			devel/llvm \
                         devel/pcre
 
 BUILD_DEPENDS =         shells/bash
 RUN_DEPENDS   =         shells/bash
 
-#MODULES	       =	lang/clang
-#MODCLANG_ARCHS =	amd64
-#MODCLANG_LANGS =	c c++
-
 do-build:
-	crystalCC -c -o ${WRKSRC}/src/llvm/ext/llvm_ext.o ${WRKSRC}/src/llvm/ext/llvm_ext.cc `llvm-config --cxxflags`
-	crystalCC -c -o ${WRKSRC}/src/ext/sigfault.o ${WRKSRC}/src/ext/sigfault.c 
+	clang-5.0 -c -o ${WRKSRC}/src/llvm/ext/llvm_ext.o ${WRKSRC}/src/llvm/ext/llvm_ext.cc `llvm-config --cxxflags`
+	clang-5.0 -c -o ${WRKSRC}/src/ext/sigfault.o ${WRKSRC}/src/ext/sigfault.c 
 
 	mkdir ${WRKSRC}/.build
-	crystalCC ${WRKSRC}/../crystal.o -o ${WRKSRC}/.build/crystal -rdynamic  ${WRKSRC}/src/ext/sigfault.o ${WRKSRC}/src/llvm/ext/llvm_ext.o `(llvm-config --libs --system-libs --ldflags 2> /dev/null)` -lstdc++ -lpcre -lgc -lpthread -levent_core -levent_extra -lssl -liconv
+	clang-5.0 ${WRKSRC}/../crystal.o -o ${WRKSRC}/.build/crystal -rdynamic  ${WRKSRC}/src/ext/sigfault.o ${WRKSRC}/src/llvm/ext/llvm_ext.o `(llvm-config --libs --system-libs --ldflags 2> /dev/null)` -lstdc++ -lpcre -lgc -lpthread -levent_core -levent_extra -lssl -liconv
 
-	cd ${WRKSRC} && gmake deps && CC=crystalCC gmake
+	cd ${WRKSRC} && gmake deps && CC=clang-5.0 gmake
 
 do-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/lib/crystal
