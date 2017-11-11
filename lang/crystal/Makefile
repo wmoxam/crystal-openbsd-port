@@ -6,7 +6,7 @@ ONLY_FOR_ARCHS =	amd64
 
 COMMENT =	statically typed object oriented language
 
-VERSION  =      0.23.1
+VERSION  =      0.24.0
 DISTNAME =	crystal-${VERSION}
 PKGNAME  =	crystal-${VERSION}
 
@@ -22,7 +22,7 @@ WANTLIB += c event_core event_extra gc iconv m pcre pthread z
 MASTER_SITES  =		https://github.com/crystal-lang/crystal/archive/
 MASTER_SITES0 = 	http://wmoxam.com/public/
 DISTFILES     =		${VERSION}.tar.gz \
-			crystal-${VERSION}-OpenBSD6.1.tar.gz:0
+			crystal-${VERSION}-OpenBSD6.2.tar.gz:0
 
 NO_CONFIGURE =		Yes
 USE_GMAKE    =		Yes
@@ -30,23 +30,20 @@ USE_GMAKE    =		Yes
 LIB_DEPENDS =           converters/libiconv \
                         devel/boehm-gc \
                         devel/libevent2 \
+			devel/llvm \
                         devel/pcre
 
 BUILD_DEPENDS =         shells/bash
 RUN_DEPENDS   =         shells/bash
 
-MODULES	       =	lang/clang
-MODCLANG_ARCHS =	amd64
-MODCLANG_LANGS =	c c++
-
 do-build:
-	clang++ -c -o ${WRKSRC}/src/llvm/ext/llvm_ext.o ${WRKSRC}/src/llvm/ext/llvm_ext.cc `llvm-config --cxxflags` 
-	clang -c -o ${WRKSRC}/src/ext/sigfault.o ${WRKSRC}/src/ext/sigfault.c `llvm-config --cflags`
+	clang-5.0 -c -o ${WRKSRC}/src/llvm/ext/llvm_ext.o ${WRKSRC}/src/llvm/ext/llvm_ext.cc `llvm-config --cxxflags`
+	clang-5.0 -c -o ${WRKSRC}/src/ext/sigfault.o ${WRKSRC}/src/ext/sigfault.c 
 
 	mkdir ${WRKSRC}/.build
-	clang++ ${WRKSRC}/../crystal.o -o ${WRKSRC}/.build/crystal -rdynamic  ${WRKSRC}/src/ext/sigfault.o ${WRKSRC}/src/llvm/ext/llvm_ext.o `(llvm-config --libs --system-libs --ldflags 2> /dev/null)` -lstdc++ -lpcre -lgc -lpthread -levent_core -levent_extra -lssl -liconv
+	clang-5.0 ${WRKSRC}/../crystal.o -o ${WRKSRC}/.build/crystal -rdynamic  ${WRKSRC}/src/ext/sigfault.o ${WRKSRC}/src/llvm/ext/llvm_ext.o `(llvm-config --libs --system-libs --ldflags 2> /dev/null)` -lstdc++ -lpcre -lgc -lpthread -levent_core -levent_extra -lssl -liconv
 
-	cd ${WRKSRC} && gmake deps && CC=clang gmake
+	cd ${WRKSRC} && gmake deps && CC=clang-5.0 gmake
 
 do-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/lib/crystal
