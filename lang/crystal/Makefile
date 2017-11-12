@@ -43,13 +43,11 @@ do-build:
 	mkdir ${WRKSRC}/.build
 	clang-5.0 ${WRKSRC}/../crystal.o -o ${WRKSRC}/.build/crystal -rdynamic  ${WRKSRC}/src/ext/sigfault.o ${WRKSRC}/src/llvm/ext/llvm_ext.o `(llvm-config --libs --system-libs --ldflags 2> /dev/null)` -lstdc++ -lpcre -lgc -lpthread -levent_core -levent_extra -lssl -liconv
 
-	cd ${WRKSRC} && gmake deps && CC=clang-5.0 gmake
+	cd ${WRKSRC} && gmake deps && gmake release=1 CC=clang-5.0 CRYSTAL_CONFIG_PATH="lib:/usr/local/lib/crystal"
 
 do-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/lib/crystal
-	${INSTALL_DATA_DIR} ${PREFIX}/lib/crystal/bin
-	${INSTALL_PROGRAM} ${WRKSRC}/.build/crystal ${PREFIX}/lib/crystal/bin
-	cp -R ${WRKSRC}/src/ ${PREFIX}/lib/crystal/src/
-	ln -s ${PREFIX}/lib/crystal/bin/crystal ${PREFIX}/bin/crystal
+	${INSTALL_PROGRAM} ${WRKSRC}/.build/crystal ${PREFIX}/bin
+	cp -R ${WRKSRC}/src/* ${PREFIX}/lib/crystal/.
 
 .include <bsd.port.mk>
