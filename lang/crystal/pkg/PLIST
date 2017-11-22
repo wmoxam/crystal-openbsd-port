@@ -1,5 +1,6 @@
 @comment $OpenBSD$
 @bin bin/crystal
+@bin bin/shards
 lib/crystal/
 lib/crystal/adler32/
 lib/crystal/adler32/adler32.cr
