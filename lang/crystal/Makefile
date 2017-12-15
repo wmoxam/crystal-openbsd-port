@@ -3,7 +3,7 @@
 # Hopefully ${CLANG_ARCHS} at some point.
 ONLY_FOR_ARCHS =	amd64
 
-V =		0.24.0
+V =		0.24.1
 V_SHARDS =	0.7.2
 COMMENT =	statically typed object oriented language
 DISTNAME =	crystal-${V}
