@@ -49,7 +49,7 @@ do-build:
 	${CC} -c -o ${WRKSRC}/src/ext/sigfault.o ${WRKSRC}/src/ext/sigfault.c
 
 	mkdir -p ${WRKSRC}/.build
-	${CC} ${WRKSRC}/../crystal.o -o ${WRKBUILD}/crystal -rdynamic \
+	${CC} ${WRKSRC}/../crystal.o -o ${WRKBUILD}/.build/crystal -rdynamic \
 		${WRKSRC}/src/ext/sigfault.o \
 		${WRKSRC}/src/llvm/ext/llvm_ext.o \
 		`(llvm-config --libs --system-libs --ldflags 2> /dev/null)` \
