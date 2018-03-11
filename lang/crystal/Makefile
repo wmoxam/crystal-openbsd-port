@@ -44,12 +44,12 @@ USE_GMAKE =	Yes
 NO_TEST =	Yes
 
 do-build:
-	${CC} -c -o ${WRKSRC}/src/llvm/ext/llvm_ext.o \
+	${CXX} -c -o ${WRKSRC}/src/llvm/ext/llvm_ext.o \
 		${WRKSRC}/src/llvm/ext/llvm_ext.cc `llvm-config --cxxflags`
 	${CC} -c -o ${WRKSRC}/src/ext/sigfault.o ${WRKSRC}/src/ext/sigfault.c
 
 	mkdir -p ${WRKSRC}/.build
-	${CC} ${WRKSRC}/../crystal.o -o ${WRKBUILD}/.build/crystal -rdynamic \
+	${CXX} ${WRKSRC}/../crystal.o -o ${WRKBUILD}/.build/crystal -rdynamic \
 		${WRKSRC}/src/ext/sigfault.o \
 		${WRKSRC}/src/llvm/ext/llvm_ext.o \
 		`(llvm-config --libs --system-libs --ldflags 2> /dev/null)` \
