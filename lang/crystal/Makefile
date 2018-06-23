@@ -8,6 +8,7 @@ V_SHARDS =	0.7.2
 COMMENT =	statically typed object oriented language
 DISTNAME =	crystal-${V}
 CATEGORIES =	lang
+REVISION = 	0
 
 HOMEPAGE =	https://crystal-lang.org/
 MAINTAINER =	Wesley Moxam <wes@wmoxam.com>
@@ -29,7 +30,8 @@ DISTFILES =	crystal-${V}{${V}}.tar.gz \
 # Only builds with clang
 COMPILER =	base-clang ports-clang
 
-BUILD_DEPENDS =	devel/llvm
+BUILD_DEPENDS =	devel/llvm \
+		shells/bash
 
 LIB_DEPENDS =	converters/libiconv \
 		devel/boehm-gc \
