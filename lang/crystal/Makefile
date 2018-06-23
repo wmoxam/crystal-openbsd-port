@@ -8,6 +8,7 @@ V_SHARDS =	0.7.2
 COMMENT =	statically typed object oriented language
 DISTNAME =	crystal-${V}
 CATEGORIES =	lang
+REVISION = 	0
 
 HOMEPAGE =	https://crystal-lang.org/
 MAINTAINER =	Wesley Moxam <wes@wmoxam.com>
