@@ -29,7 +29,8 @@ DISTFILES =	crystal-${V}{${V}}.tar.gz \
 # Only builds with clang
 COMPILER =	base-clang ports-clang
 
-BUILD_DEPENDS =	devel/llvm
+BUILD_DEPENDS =	devel/llvm \
+		shells/bash
 
 LIB_DEPENDS =	converters/libiconv \
 		devel/boehm-gc \
