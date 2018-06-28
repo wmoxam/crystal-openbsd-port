@@ -3,7 +3,7 @@
 # Hopefully ${CLANG_ARCHS} at some point.
 ONLY_FOR_ARCHS=	amd64
 
-V =		0.25.0
+V =		0.25.1
 V_SHARDS =	0.8.1
 COMMENT =	statically typed object oriented language
 DISTNAME =	crystal-${V}
@@ -62,9 +62,10 @@ do-build:
 		-lstdc++ -lpcre -lgc -lpthread -levent_core -levent_extra \
 		-lssl -liconv
 	# Use the compiler to re-compile the compiler
-	# stacksize must be cranked or compiler will segfault
+	# stack and data size must be cranked or compiler may segfault
 	touch ${WRKSRC}/src/compiler/crystal.cr
-	cd ${WRKSRC}; ulimit -Ss `ulimit -Hs`; \
+	cd ${WRKSRC}; \
+		ulimit -Sd `ulimit -Hd`; ulimit -Ss `ulimit -Hs`; \
 		CRYSTAL_CONFIG_PATH="lib:${TRUEPREFIX}/lib/crystal" \
 		CXX=${CXX} ${MAKE_PROGRAM} ${ALL_TARGET}
 	cd ${WRKSRC}/../shards-${V_SHARDS} && \
