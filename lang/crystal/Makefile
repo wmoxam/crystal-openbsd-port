@@ -69,8 +69,8 @@ do-build:
 		CRYSTAL_CONFIG_PATH="lib:${TRUEPREFIX}/lib/crystal" \
 		CXX=${CXX} ${MAKE_PROGRAM} ${ALL_TARGET}
 	cd ${WRKSRC}/../shards-${V_SHARDS} && \
-		CRYSTAL=${WRKSRC}/.build/crystal CRFLAGS=--release \
-		${MAKE_PROGRAM}
+		${MAKE_PROGRAM} CRYSTAL=${WRKSRC}/.build/crystal CRFLAGS=--release \
+		CRYSTAL_PATH=${WRKSRC}/src
 
 do-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/lib/crystal
