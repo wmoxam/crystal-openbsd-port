@@ -3,7 +3,7 @@
 # Hopefully ${CLANG_ARCHS} at some point.
 ONLY_FOR_ARCHS=	amd64
 
-V =		0.25.1
+V =		0.26.1
 V_SHARDS =	0.8.1
 COMMENT =	statically typed object oriented language
 DISTNAME =	crystal-${V}
@@ -23,7 +23,7 @@ WANTLIB += m pcre yaml
 # 	--target amd64-unknown-openbsd`uname -r` src/compiler/crystal.cr \
 # 	-D i_know_what_im_doing
 MASTER_SITES =	https://github.com/crystal-lang/crystal/archive/
-MASTER_SITES0 =	https://jcs.org/tmp/
+MASTER_SITES0 =	https://wmoxam.com/public/
 MASTER_SITES1 =	https://github.com/crystal-lang/shards/archive/
 DISTFILES =	crystal-${V}{${V}}.tar.gz \
 		crystal-${V}-OpenBSD6.3.tar.gz:0 \
@@ -69,8 +69,8 @@ do-build:
 		CRYSTAL_CONFIG_PATH="lib:${TRUEPREFIX}/lib/crystal" \
 		CXX=${CXX} ${MAKE_PROGRAM} ${ALL_TARGET}
 	cd ${WRKSRC}/../shards-${V_SHARDS} && \
-		CRYSTAL=${WRKSRC}/.build/crystal CRFLAGS=--release \
-		${MAKE_PROGRAM}
+		${MAKE_PROGRAM} CRYSTAL=${WRKSRC}/.build/crystal CRFLAGS=--release \
+		CRYSTAL_PATH=${WRKSRC}/src
 
 do-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/lib/crystal
